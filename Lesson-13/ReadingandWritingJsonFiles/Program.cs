@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.Text.Encodings.Web;
+using System.Text.Json;
 
 namespace ReadingandWritingJsonFiles;
 
@@ -7,7 +8,8 @@ class Program
     private static readonly JsonSerializerOptions s_writeOptions = new()
     {
         PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-        WriteIndented = true
+        WriteIndented = true,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
     };
 
     static void Main()
@@ -20,6 +22,13 @@ class Program
             Email = "doe@example.com",
             PhoneNumber = "555-555812",
             Age = 27
+        };
+
+        John.Address = new Address()
+        {
+            AddressLine = "1st Street",
+            PostalCode = "98 655",
+            City = "New York"
         };
     
     Console.WriteLine(John);

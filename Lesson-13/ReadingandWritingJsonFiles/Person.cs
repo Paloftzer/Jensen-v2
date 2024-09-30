@@ -11,7 +11,7 @@ public class Person
 
     public int Age { get; set; }
 
-
+    public Address Address { get; set; } = new Address();
 
     public override string ToString()
     {

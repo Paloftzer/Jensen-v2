@@ -4,6 +4,12 @@ namespace ReadingandWritingJsonFiles;
 
 class Program
 {
+    private static readonly JsonSerializerOptions s_writeOptions = new()
+    {
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    };
+
     static void Main()
     {
         Person John = new()
@@ -19,7 +25,7 @@ class Program
     Console.WriteLine(John);
 
     var path = string.Concat(Environment.CurrentDirectory, "/data/person.json");
-    var json = JsonSerializer.Serialize(John);
+    var json = JsonSerializer.Serialize(John, s_writeOptions);
     // Console.WriteLine(json);
 
     File.WriteAllText(path, json);

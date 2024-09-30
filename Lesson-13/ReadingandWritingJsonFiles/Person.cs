@@ -15,6 +15,6 @@ public class Person
 
     public override string ToString()
     {
-        return $"Created at: {CreatedAt}, Name: {FirstName}, {LastName}, Email: {Email}, Phone Number: {PhoneNumber}, Age: {Age}";
+        return $"Created at: {CreatedAt}, Name: {FirstName} {LastName}, Email: {Email}, Phone Number: {PhoneNumber}, Age: {Age}";
     }
 }

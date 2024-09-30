@@ -12,6 +12,12 @@ class Program
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping
     };
 
+    private static readonly JsonSerializerOptions s_readOptions = new()
+    {
+        PropertyNameCaseInsensitive = true,
+        AllowTrailingCommas = true
+    };
+
     static void Main()
     {
         Person John = new()
@@ -32,11 +38,19 @@ class Program
         };
     
     Console.WriteLine(John);
+    Console.WriteLine(new string('-', 110));
 
     var path = string.Concat(Environment.CurrentDirectory, "/data/person.json");
     var json = JsonSerializer.Serialize(John, s_writeOptions);
     // Console.WriteLine(json);
 
     File.WriteAllText(path, json);
+
+    Console.WriteLine(File.ReadAllText(path));
+    Console.WriteLine(new string('-', 110));
+
+    var person = JsonSerializer.Deserialize<Person>(json, s_readOptions);
+    Console.WriteLine(person);
+    Console.WriteLine(new string('-', 110));
     }
 }

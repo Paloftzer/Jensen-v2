@@ -1,4 +1,6 @@
-﻿namespace ReadingandWritingJsonFiles;
+﻿using System.Text.Json;
+
+namespace ReadingandWritingJsonFiles;
 
 class Program
 {
@@ -17,5 +19,9 @@ class Program
     Console.WriteLine(John);
 
     var path = string.Concat(Environment.CurrentDirectory, "/data/person.json");
+    var json = JsonSerializer.Serialize(John);
+    // Console.WriteLine(json);
+
+    File.WriteAllText(path, json);
     }
 }

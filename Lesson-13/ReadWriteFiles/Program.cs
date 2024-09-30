@@ -23,5 +23,10 @@ class Program
 
         sw.WriteLine(message);
         sw.Close();
+
+        using StreamReader sr = new(path);
+
+        Console.WriteLine(sr.ReadToEnd());
+        sr.Close();
     }
 }
